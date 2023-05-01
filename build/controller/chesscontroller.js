@@ -9,20 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// getting a single post
+const chess_1 = require("../component/chess");
 const getNextMove = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    // get the post id from the req
     const type = req.params.type;
     const position = req.params.position;
-    console.log("im here here here");
-    console.log("id id");
-    console.log(type);
-    // get the post
-    /*let result: AxiosResponse = await axios.get(
-      `http://jsonplaceholder.typicode.com/chess/${id}`
-    );*/
+    const nextMoves = (0, chess_1.getTheNextMoves)(type, position);
     return res.status(200).json({
-        message: type,
+        nextMoves: nextMoves,
     });
 });
 exports.default = { getNextMove };
